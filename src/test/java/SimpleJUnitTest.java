@@ -9,12 +9,11 @@ import static com.codeborne.selenide.Selenide.*;
 public class SimpleJUnitTest {
 
     @BeforeAll
-    static void beforeAll() {
+    static void setupSelenideEnv() {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        //Configuration.holdBrowserOpen = true;
-        Configuration.timeout = 5000; // default 4000
+        Configuration.timeout = 5000;
     }
 
     @Test
@@ -54,9 +53,9 @@ public class SimpleJUnitTest {
         $("#currentAddress").setValue("Улица Еркинова 85");
 
         //State and city
-        $(".css-1wa3eu0-placeholder").click();
+        $("#state").click();
         $(byText("NCR")).click();
-        $(".css-1wa3eu0-placeholder").click();
+        $("#city").click();
         $(byText("Noida")).click();
 
         //Button
@@ -73,8 +72,5 @@ public class SimpleJUnitTest {
         $(".table-responsive").$(byText("Picture")).parent().shouldHave(text("Picture.png"));
         $(".table-responsive").$(byText("Address")).parent().shouldHave(text("Улица Еркинова 85"));
         $(".table-responsive").$(byText("State and City")).parent().shouldHave(text("NCR Noida"));
-
-
-
     }
 }

@@ -12,17 +12,18 @@ public class SimpleJUnitTest {
 
     @BeforeAll
     static void setupSelenideEnv() {
+
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 5000;
-        executeJavaScript("$('footer').remove();");
-        executeJavaScript("$('#fixedban').remove();");
     }
 
     @Test
     void automationPracticeForm() {
         open("/automation-practice-form");
+        executeJavaScript("$('footer').remove();");
+        executeJavaScript("$('#fixedban').remove();");
 
         //Name
         $("#firstName").setValue("dfsla");

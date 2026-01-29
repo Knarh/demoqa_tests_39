@@ -1,3 +1,5 @@
+package tests;
+
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -14,6 +16,8 @@ public class SimpleJUnitTest {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 5000;
+        executeJavaScript("$('footer').remove();");
+        executeJavaScript("$('#fixedban').remove();");
     }
 
     @Test
